@@ -23,4 +23,8 @@ export class DialogComponent implements OnInit {
     this.wishListService.addId(this.book);
   }
 
+  public get isInWishList(): boolean {
+    return this.wishListService.wishlist.find(b => b.id === this.book.id) !== undefined;
+  }
+
 }

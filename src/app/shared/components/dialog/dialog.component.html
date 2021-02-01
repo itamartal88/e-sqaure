@@ -1,9 +1,12 @@
 
 
 <div class="content">
+    <h1>{{book.volumeInfo.title}}</h1>
     <img src="{{book.volumeInfo.imageLinks.smallThumbnail}}" alt="img">
-    <div (click)="addToWishlist()" class="footer pointer">
-        <span>add to wishList</span>
-        <img src="assets/heart.svg" alt="heart">
+    <div class="desc">
+        {{book.volumeInfo.description}}
+    </div>
+    <div class="footer pointer">
+        <p-button [disabled]="isInWishList" (onClick)="addToWishlist()" label="Add to wishList" icon="pi pi-check" iconPos="left"></p-button>
     </div>
 </div>
