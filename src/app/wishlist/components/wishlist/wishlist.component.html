@@ -5,12 +5,18 @@
     </div>
 </app-header>
 <div class="main">
-<ng-container *ngIf="wishlist.length > 0; else emptyList">
-    <div class="card" *ngFor="let book of wishlist">
-        <p>{{book.volumeInfo.title}}</p>
-        <p-button (onClick)="removeFromList(book.id)" label="Remove"  styleClass="p-button-link"></p-button>
-    </div>
-</ng-container>
+    <ng-container *ngIf="wishlist.length > 0; else emptyList">
+        <h1>Your wish list</h1>
+        <ng-container *ngFor="let book of wishlist">
+            <app-card [book]="book">
+                <ng-container buttons>
+                    <div class="remove-container">
+                        <p-button (onClick)="removeFromList(book.id)" label="Remove"  styleClass="p-button-link"></p-button>
+                    </div>
+                </ng-container>
+            </app-card>
+        </ng-container>
+    </ng-container>
 </div>
 
 <ng-template #emptyList>

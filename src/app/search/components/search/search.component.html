@@ -15,17 +15,7 @@
     </div>
     <div class="results">
         <ng-container *ngFor="let book of books">
-            <div class="card pointer" (click)="openInfoModal(book)">
-                <div class="img-container">
-                    <img onerror="this.src = 'assets/BookFrame.svg'" src="{{book.volumeInfo.imageLinks?.smallThumbnail}}" alt="img">
-                </div>
-                <div class="data-container">
-                    <h1 [title]="book.volumeInfo.title">{{book.volumeInfo.title}}</h1>
-                   <span>Authors: </span> <span class="author" *ngFor="let author of book.volumeInfo.authors">{{author}}</span>
-                   <br>
-                   <span>categories: </span> <span class="category" *ngFor="let category of book.volumeInfo.categories">{{category}}</span>
-                </div>
-            </div>
+            <app-card [book]="book" (onClick)="openInfoModal(book)"></app-card>
         </ng-container>
     </div>
     <div class="pagination" *ngIf="books && books.length > 0">

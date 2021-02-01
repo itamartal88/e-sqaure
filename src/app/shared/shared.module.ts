@@ -10,8 +10,9 @@ import { HeaderComponent } from './components/header/header.component';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import { DialogComponent } from './components/dialog/dialog.component';
 import {DialogService} from 'primeng/dynamicdialog';
+import { CardComponent } from './components/card/card.component';
 @NgModule({
-  declarations: [HeaderComponent, DialogComponent],
+  declarations: [HeaderComponent, DialogComponent, CardComponent],
   imports: [
     CommonModule,
     FormsModule, 
@@ -36,6 +37,7 @@ import {DialogService} from 'primeng/dynamicdialog';
     HeaderComponent,
     DynamicDialogModule,
     DialogComponent,
+    CardComponent
   ],
   bootstrap: []
 })
