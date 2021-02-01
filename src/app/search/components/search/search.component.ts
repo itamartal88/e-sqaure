@@ -5,6 +5,8 @@ import { takeUntil } from 'rxjs/operators';
 import { BookData } from 'src/app/shared/models/DTOs/Books.dto';
 import { UserDataService } from 'src/app/shared/services/user-data.service';
 import { BooksSearchService } from '../../services/books-search.service';
+import {DialogService} from 'primeng/dynamicdialog';
+import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-search',
@@ -22,7 +24,8 @@ export class SearchComponent implements OnInit, OnDestroy {
     private userDataService: UserDataService,
     private booksSearchService: BooksSearchService,
     private router: Router,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public dialogService: DialogService
   ) { }
 
   ngOnInit(): void {
@@ -63,7 +66,14 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   public openInfoModal(book: BookData): void {
-
+    const ref = this.dialogService.open(DialogComponent, {
+      header: book.volumeInfo.title,
+      width: '300px',
+      height: '500px',
+      data: {
+        book
+      }
+    });
   }
 
 

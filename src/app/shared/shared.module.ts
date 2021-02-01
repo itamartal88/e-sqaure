@@ -7,19 +7,24 @@ import {ButtonModule} from 'primeng/button';
 import { BooksHttpService } from './services/http/books.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
+import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import { DialogComponent } from './components/dialog/dialog.component';
+import {DialogService} from 'primeng/dynamicdialog';
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, DialogComponent],
   imports: [
     CommonModule,
     FormsModule, 
     ReactiveFormsModule,
     InputTextModule,
     ButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    DynamicDialogModule,
   ],
   providers: [
     AuthGuard, 
-    BooksHttpService
+    BooksHttpService,
+    DialogService
     ],
   exports: [
     CommonModule,
@@ -28,7 +33,9 @@ import { HeaderComponent } from './components/header/header.component';
     InputTextModule,
     ButtonModule,
     HttpClientModule,
-    HeaderComponent
+    HeaderComponent,
+    DynamicDialogModule,
+    DialogComponent,
   ],
   bootstrap: []
 })

@@ -11,7 +11,7 @@ export interface BookData {
     volumeInfo: {
         title: string;
         subtitle: string;
-        imagesLinks: {
+        imageLinks: {
             smallThumbnail: string; 
             thumbnail: string;
         },
