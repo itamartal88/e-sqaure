@@ -62,6 +62,10 @@ export class SearchComponent implements OnInit, OnDestroy {
       })
   }
 
+  public openInfoModal(book: BookData): void {
+
+  }
+
 
   public moveToPage(page: number): void {
     if (page < 1 || page > this.numberOfPages.length) {

@@ -15,7 +15,8 @@
     </div>
     <div class="results">
         <div class="card" *ngFor="let book of books">
-            {{book.volumeInfo.title}}
+            <p>{{book.volumeInfo.title}}</p>
+            <p-button label="Info" (onClick)="openInfoModal(book)" class="p-button-sm"></p-button>
         </div>
     </div>
     <div class="pagination" *ngIf="books.length > 0">
