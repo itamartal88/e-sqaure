@@ -1,0 +1,11 @@
+<div class="header-container">
+    <div class="content">
+        <div *ngIf="showLogout" class="header_logout">
+            <div (click)="logout()" class="pointer">
+                <img src="assets/icons-log-out.svg" alt="logout">
+                <span class="text">logout</span>
+            </div>
+        </div>
+        <ng-content></ng-content>
+    </div>
+</div>

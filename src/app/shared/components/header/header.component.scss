@@ -1,0 +1,35 @@
+.header-container {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.15);
+    background-color: white;
+    padding: 20px;
+    position: relative;
+
+    .content {
+        display: flex;
+        .header_logout {
+            padding: 0 20px;
+            display: flex;
+            .pointer {
+              display: flex;
+            }
+            .text {
+              font-size: 18px;
+              color: #222f50;
+            }
+            img {
+              margin: 0 6px;
+              transform: scaleX(-1);
+            }
+          }
+    }
+    .icon {
+        img {
+            top: -6px;
+            position: relative;
+        }
+    }
+}

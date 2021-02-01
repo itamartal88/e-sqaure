@@ -2,9 +2,12 @@
 .form {
     display: flex;
     flex-direction: column;
-    width: 150px;
+    width: fit-content;
     margin: auto;
     justify-content: center;
     margin-top: 200px;
     align-items: center;
+    .p-float-label {
+        margin-bottom: 20px;
+    }
 }

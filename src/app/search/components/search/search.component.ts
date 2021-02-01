@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { UserDataService } from 'src/app/shared/services/user-data.service';
@@ -15,7 +16,8 @@ export class SearchComponent implements OnInit, OnDestroy {
   private onDestroy$: Subject<void> = new Subject();
   constructor(
     private userDataService: UserDataService,
-    private booksSearchService: BooksSearchService
+    private booksSearchService: BooksSearchService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -38,6 +40,10 @@ export class SearchComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
    this.onDestroy$.next();
    this.onDestroy$.complete();
+  }
+
+  public goToWishList() {
+    this.router.navigate(['wishlist'])
   }
 
 }

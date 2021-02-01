@@ -1,7 +1,8 @@
+<app-header></app-header>
 <div class="form" [formGroup]="formGroup">
     <span class="p-float-label">
         <input id="userName" type="text" pInputText formControlName="userName">
+        <label for="userName">Username</label>
     </span>
-    <button [ngClass]="{'pointer': formGroup.valid}" [disabled]="!formGroup.valid" (click)="submit()" pButton
-        type="button" label="submit" class="p-button-link"></button>
+    <p-button [disabled]="!formGroup.valid" label="Login" (onClick)="submit()" class="p-button-sm"></p-button>
 </div>

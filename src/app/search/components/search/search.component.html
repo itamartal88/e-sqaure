@@ -1,6 +1,14 @@
 
-
+<app-header showLogout="true">
+    <div (click)="goToWishList()" class="pointer">
+        <img src="assets/wishlist.svg" alt="wishlist">
+        <span class="text">Wish List</span>
+    </div>
+</app-header>
 <div class="search-container">
-    <h3>{{userName}}</h3>
-    <input [(ngModel)]="inputText" type="text" (keyup)="getBooks()">
+    <h3>Hello {{userName}}</h3>
+    <span class="p-float-label">
+        <input (keyup)="getBooks()" id="search" pInputText [(ngModel)]="inputText">
+        <label for="search">search</label>
+    </span>
 </div>
