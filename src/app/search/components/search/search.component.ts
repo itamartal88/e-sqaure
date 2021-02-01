@@ -71,8 +71,6 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   public openInfoModal(book: BookData): void {
     const ref = this.dialogService.open(DialogComponent, {
-      width: '300px',
-      height: '500px',
       data: {
         book
       }

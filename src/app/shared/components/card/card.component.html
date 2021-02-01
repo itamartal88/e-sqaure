@@ -6,9 +6,18 @@
     </div>
     <div class="data-container">
         <h1 [title]="book.volumeInfo.title">{{book.volumeInfo.title}}</h1>
-       <span>Authors: </span> <span class="author" *ngFor="let author of book.volumeInfo.authors">{{author}}</span>
-       <br>
-       <span>categories: </span> <span class="category" *ngFor="let category of book.volumeInfo.categories">{{category}}</span>
+        <div class="prop-container">
+            <span>Authors: </span> <span class="author" *ngFor="let author of book.volumeInfo.authors">{{author}}</span>
+        </div>
+        <div *ngIf="book.volumeInfo.categories" class="prop-container">
+       <span >Categories: </span> <span class="category" *ngFor="let category of book.volumeInfo.categories">{{category}}</span>
+        </div>
+        <div class="prop-container">
+            <span>Language: {{book.volumeInfo.language}}</span>
+        </div>
+        <div class="prop-container">
+            <span>Published Date: {{book.volumeInfo.publishedDate}}</span>
+        </div>
        <ng-content select="[buttons]"></ng-content>
     </div>
 </div>

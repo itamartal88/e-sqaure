@@ -24,9 +24,12 @@
         white-space: nowrap;
         text-overflow: ellipsis
       }
-      .author, .category{
-        &:not(:last-of-type)::after {
-          content: ', ';
+      .prop-container {
+        margin-bottom: 10px;
+        .author, .category{
+          &:not(:last-of-type)::after {
+            content: ', ';
+          }
         }
       }
     }
