@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import {  combineLatest, Observable, Subject } from 'rxjs';
-import {  map, switchMap, tap } from 'rxjs/operators';
+import {  map, startWith, switchMap, tap } from 'rxjs/operators';
 import { MAX_RESULT } from 'src/app/shared/consts/app.const';
 import { BookData, BooksResponseDTO } from 'src/app/shared/models/DTOs/Books.dto';
 import { BooksHttpService } from 'src/app/shared/services/http/books.service';
@@ -18,7 +18,7 @@ export class BooksSearchService {
 
     public getBooks(): Observable<BookData[]> {
         return combineLatest([
-            this.inputText$,
+            this.inputText$.pipe(startWith(this._currentText)),
             this.currentPage$
         ])
             .pipe(

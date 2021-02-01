@@ -17,7 +17,7 @@
         <ng-container *ngFor="let book of books">
             <div class="card pointer" (click)="openInfoModal(book)">
                 <div class="img-container">
-                    <img *ngIf="book.volumeInfo.imageLinks" src="{{book.volumeInfo.imageLinks.smallThumbnail}}" alt="img">
+                    <img onerror="this.src = 'assets/BookFrame.svg'" src="{{book.volumeInfo.imageLinks?.smallThumbnail}}" alt="img">
                 </div>
                 <div class="data-container">
                     <h1 [title]="book.volumeInfo.title">{{book.volumeInfo.title}}</h1>

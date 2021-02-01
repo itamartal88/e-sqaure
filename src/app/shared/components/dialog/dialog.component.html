@@ -2,7 +2,7 @@
 
 <div class="content">
     <h1>{{book.volumeInfo.title}}</h1>
-    <img src="{{book.volumeInfo.imageLinks.smallThumbnail}}" alt="img">
+    <img onerror="this.src = 'assets/BookFrame.svg'" src="{{book.volumeInfo.imageLinks?.smallThumbnail}}" alt="img">
     <div class="desc">
         {{book.volumeInfo.description}}
     </div>
