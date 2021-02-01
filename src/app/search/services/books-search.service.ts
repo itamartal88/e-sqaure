@@ -3,6 +3,7 @@ import {  combineLatest, Observable, Subject } from 'rxjs';
 import {  map, startWith, switchMap, tap } from 'rxjs/operators';
 import { MAX_RESULT } from 'src/app/shared/consts/app.const';
 import { BookData, BooksResponseDTO } from 'src/app/shared/models/DTOs/Books.dto';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { BooksHttpService } from 'src/app/shared/services/http/books.service';
 
 @Injectable()
@@ -13,8 +14,11 @@ export class BooksSearchService {
     public inputText$: Subject<string> = new Subject();
     public currentPage$: Subject<number> = new Subject();
     constructor(
-        private booksHttpService: BooksHttpService
-    ) { }
+        private booksHttpService: BooksHttpService,
+        private authService: AuthService
+    ) { 
+        this.logout();
+    }
 
     public getBooks(): Observable<BookData[]> {
         return combineLatest([
@@ -29,6 +33,14 @@ export class BooksSearchService {
                 }),
                 map((data) => data.items)
             );
+    }
+
+    private logout(): void {
+        this.authService.logout$.subscribe(() => {
+            this._totalResult = 0
+            this._currentBooks = [];
+            this._currentText = null;
+        })
     }
 
     public get totalPages(): number[] {

@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   public submit(): void {
     this.userDataService.userName = this.formGroup.get('userName').value;
-    localStorage.setItem('token', 'lskdlssdsd');
+    localStorage.setItem('token', this.formGroup.get('userName').value);
     this.router.navigate(['search']);
   }
 

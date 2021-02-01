@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,14 +11,16 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   @Input() showLogout: boolean;
   constructor(
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
   }
 
   public logout(): void {
-    this.router.navigate(['logout'])
+    this.router.navigate(['logout']);
+    this.authService.logout$.next();
   }
 
 }

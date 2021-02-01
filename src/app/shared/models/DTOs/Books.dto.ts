@@ -18,5 +18,7 @@ export interface BookData {
         authors: string[];
         categories: string[];
         description: string;
+        language: string;
+        publishedDate: string;
     }
 }

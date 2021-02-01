@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BookData } from '../models/DTOs/Books.dto';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class WishListService {
-
+    constructor(private authService: AuthService) {
+        this.logout();
+    }
     private _wishList: BookData[] = []
 
     public removeId(id: string): void {
@@ -13,8 +16,18 @@ export class WishListService {
         }
     }
 
+    private logout(): void {
+        this.authService.logout$.subscribe(() => {
+            this.wishList = [];
+        })
+    }
+
     public addId(id: BookData): void {
         this._wishList.push(id);
+    }
+
+    public set wishList(list: BookData[]) {
+        this._wishList = list;
     }
 
     public get wishlist(): BookData[] {
