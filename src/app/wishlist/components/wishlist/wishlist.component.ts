@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WishlistComponent implements OnInit {
-
+  public wishlist: any[] = [];
   constructor(
     private router: Router
   ) { }

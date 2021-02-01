@@ -5,10 +5,24 @@
         <span class="text">Wish List</span>
     </div>
 </app-header>
-<div class="search-container">
-    <h3>Hello {{userName}}</h3>
-    <span class="p-float-label">
-        <input (keyup)="getBooks()" id="search" pInputText [(ngModel)]="inputText">
-        <label for="search">search</label>
-    </span>
+<div class="main">
+    <div class="search-container">
+        <h3>Hello {{userName}}</h3>
+        <span class="p-float-label">
+            <input (keyup)="getBooks()" id="search" pInputText [(ngModel)]="inputText">
+            <label for="search">search</label>
+        </span>
+    </div>
+    <div class="results">
+        <div class="card" *ngFor="let book of books">
+            {{book.volumeInfo.title}}
+        </div>
+    </div>
+    <div class="pagination" *ngIf="books.length > 0">
+        <img (click)="moveToPage(currentPage - 1)" src="assets/left.svg"/>
+        <span [ngClass]="{'selected-page': currentPage === num}" (click)="moveToPage(num)" class="pagination_number" *ngFor="let num of numberOfPages">
+          {{num}}
+        </span>
+        <img (click)="moveToPage(currentPage + 1)" src="assets/right.svg"/>
+    </div>
 </div>

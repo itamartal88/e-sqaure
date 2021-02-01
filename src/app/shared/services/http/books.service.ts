@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { ApiEndPoints } from '../../models/ApiEndPoints.model';
-
+import { ApiEndPoints } from 'src/app/shared/models/ApiEndPoints.model';
+import { MAX_RESULT } from 'src/app/shared/consts/app.const';
+import { BooksResponseDTO } from 'src/app/shared/models/DTOs/Books.dto'
 @Injectable()
 export class BooksHttpService {
 
@@ -11,9 +11,8 @@ export class BooksHttpService {
         private readonly httpClient: HttpClient
     ) {}
 
-    public getBooks(search: string): Observable<any> {
-        const url = `${ApiEndPoints.GET_BOOKS}${search}`;
-        return this.httpClient.get<any>(url)
-            .pipe(map(response => response))
+    public getBooks(search: string): Observable<BooksResponseDTO> {
+        const url = `${ApiEndPoints.GET_BOOKS}${search}&maxResults=${MAX_RESULT}`;
+        return this.httpClient.get<BooksResponseDTO>(url);
     }
 }

@@ -4,3 +4,12 @@
         <span class="text">search</span>
     </div>
 </app-header>
+<div class="main">
+<ng-container *ngIf="wishlist.length > 0; else emptyList">
+
+</ng-container>
+</div>
+
+<ng-template #emptyList>
+    <h1>Wish list is empty..</h1>
+</ng-template>
