@@ -9,3 +9,16 @@
     margin: 0 6px;
     width: 16px;
   }
+
+  .main {
+    margin-top: 50px;
+    .card {
+      box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.15);
+      background-color: white;
+      padding: 20px;
+      min-width: 150px;
+      margin: 0 20px;
+      display: inline-block;
+      max-width: 200px;
+    }
+  }

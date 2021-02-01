@@ -61,6 +61,10 @@ export class SearchComponent implements OnInit, OnDestroy {
       ).subscribe((res) => {
         this.books = res;
         this.numberOfPages = this.booksSearchService.totalPages;
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
         this.cdr.detectChanges();
       })
   }
@@ -81,7 +85,6 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (page < 1 || page > this.numberOfPages.length) {
       return;
     }
-    this.booksSearchService.inputText$.next(this.inputText);
     this.booksSearchService.currentPage$.next(page)
   }
 

@@ -17,12 +17,15 @@ export class WishlistComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    debugger;
     this.wishlist = this.wishListService.wishlist;
   }
 
   public goToSearch() {
     this.router.navigate(['search']);
+  }
+
+  public removeFromList(id: string): void {
+    this.wishListService.removeId(id)
   }
 
 }

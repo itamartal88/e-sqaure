@@ -6,7 +6,10 @@
 </app-header>
 <div class="main">
 <ng-container *ngIf="wishlist.length > 0; else emptyList">
-
+    <div class="card" *ngFor="let book of wishlist">
+        <p>{{book.volumeInfo.title}}</p>
+        <p-button (onClick)="removeFromList(book.id)" label="Remove"  styleClass="p-button-link"></p-button>
+    </div>
 </ng-container>
 </div>
 

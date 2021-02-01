@@ -12,7 +12,7 @@ export class BooksHttpService {
     ) {}
 
     public getBooks(search: string, index: number): Observable<BooksResponseDTO> {
-        const url = `${ApiEndPoints.GET_BOOKS}${search}&maxResults=${MAX_RESULT}&startIndex=${index}`;
+        const url = `${ApiEndPoints.GET_BOOKS}${search}&maxResults=${MAX_RESULT}&startIndex=${index}&orderBy=newest&printType=books`;
         return this.httpClient.get<BooksResponseDTO>(url);
     }
 }
