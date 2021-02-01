@@ -81,7 +81,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
 
   public moveToPage(page: number): void {
-    if (page < 1 || page > this.numberOfPages.length) {
+    if (page < 1 || page > this.numberOfPages.length || !this.inputText) {
       return;
     }
     this.booksSearchService.currentPage$.next(page)
