@@ -26,6 +26,19 @@ export class SearchComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.initBookListener();
+    this.initialPreviousData();
+    this.booksSearchService.currentPage$.pipe(
+      takeUntil(this.onDestroy$)
+    ).subscribe((num) => {
+      this.currentPage = num;
+    });
+  }
+
+  private initialPreviousData(): void {
+    this.books = this.booksSearchService.currentBooks;
+    this.numberOfPages = this.booksSearchService.totalPages;
+    this.inputText = this.booksSearchService.currentText;
   }
 
   public get userName(): string {
@@ -34,27 +47,34 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   public getBooks(): void {
     if (!this.inputText) { return; }
-    this.booksSearchService.getBooks(this.inputText)
-    .pipe(
-      takeUntil(this.onDestroy$)
-    )
-    .subscribe((res) => {
-     this.books = res;
-     this.numberOfPages = Array.from(Array(Math.round(this.booksSearchService.totalPages)), (v, i) => i + 1);
-     this.cdr.detectChanges();
-    })
+    this.booksSearchService.inputText$.next(this.inputText);
+    this.booksSearchService.currentPage$.next(1)
   }
+
+  private initBookListener(): void {
+    this.booksSearchService.getBooks()
+      .pipe(
+        takeUntil(this.onDestroy$)
+      ).subscribe((res) => {
+        this.books = res;
+        this.numberOfPages = this.booksSearchService.totalPages;
+        this.cdr.detectChanges();
+      })
+  }
+
 
   public moveToPage(page: number): void {
     if (page < 1 || page > this.numberOfPages.length) {
       return;
     }
-    this.currentPage = page;
+    this.booksSearchService.inputText$.next(this.inputText);
+    this.booksSearchService.currentPage$.next(page)
   }
 
   ngOnDestroy(): void {
-   this.onDestroy$.next();
-   this.onDestroy$.complete();
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+    this.booksSearchService.currentText = this.inputText;
   }
 
   public goToWishList() {

@@ -11,8 +11,8 @@ export class BooksHttpService {
         private readonly httpClient: HttpClient
     ) {}
 
-    public getBooks(search: string): Observable<BooksResponseDTO> {
-        const url = `${ApiEndPoints.GET_BOOKS}${search}&maxResults=${MAX_RESULT}`;
+    public getBooks(search: string, index: number): Observable<BooksResponseDTO> {
+        const url = `${ApiEndPoints.GET_BOOKS}${search}&maxResults=${MAX_RESULT}&startIndex=${index}`;
         return this.httpClient.get<BooksResponseDTO>(url);
     }
 }
