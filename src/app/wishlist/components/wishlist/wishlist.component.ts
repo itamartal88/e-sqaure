@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BookData } from 'src/app/shared/models/DTOs/Books.dto';
+import { WishListService } from 'src/app/shared/services/wishlist.serivce';
 
 @Component({
   selector: 'app-wishlist',
@@ -8,12 +10,15 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WishlistComponent implements OnInit {
-  public wishlist: any[] = [];
+  public wishlist: BookData[] = [];
   constructor(
-    private router: Router
+    private router: Router,
+    private wishListService: WishListService
   ) { }
 
   ngOnInit(): void {
+    debugger;
+    this.wishlist = this.wishListService.wishlist;
   }
 
   public goToSearch() {

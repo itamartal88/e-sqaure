@@ -19,7 +19,7 @@
             <p-button label="Info" (onClick)="openInfoModal(book)" class="p-button-sm"></p-button>
         </div>
     </div>
-    <div class="pagination" *ngIf="books.length > 0">
+    <div class="pagination" *ngIf="books && books.length > 0">
         <img (click)="moveToPage(currentPage - 1)" src="assets/left.svg"/>
         <span [ngClass]="{'selected-page': currentPage === num}" (click)="moveToPage(num)" class="pagination_number" *ngFor="let num of numberOfPages">
           {{num}}

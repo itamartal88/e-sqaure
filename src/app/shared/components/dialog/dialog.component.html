@@ -2,4 +2,8 @@
 
 <div class="content">
     <img src="{{book.volumeInfo.imageLinks.smallThumbnail}}" alt="img">
+    <div (click)="addToWishlist()" class="footer pointer">
+        <span>add to wishList</span>
+        <img src="assets/heart.svg" alt="heart">
+    </div>
 </div>
